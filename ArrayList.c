@@ -26,7 +26,7 @@ ArrayList *createArrayList(size_t capacity) {
 }
 
 void add(ArrayList *list, void *newData, size_t index) {
-    if (index > list->size) {
+    if (index >= list->size) {
         printf("Invalid index!\n");
         return;
     }
@@ -89,7 +89,7 @@ void delete(ArrayList *list, size_t index) {
         return;
     }
 
-    if (index > list->size) {
+    if (index >= list->size) {
         printf("Invalid index!\n");
         return;
     }
@@ -135,13 +135,21 @@ void deleteEnd(ArrayList *list) {
     list->size--;
 }
 
-void clearArrayList(ArrayList *list) {
-    size_t size = list->size;
-    for (size_t i = 0; i < size; i++) {
-        if (list->data[i] != NULL)
-            free(list->data[i]);
+void replace(ArrayList *list, void *newData, size_t index) {
+    if (isEmpty(list)) {
+        printf("List is empty!\n");
+        return;
     }
 
+    if (index >= list->size) {
+        printf("Invalid index!\n");
+        return;
+    }
+
+    list->data[index] = newData;
+}
+
+void clearArrayList(ArrayList *list) {
     free(list->data);
     free(list);
 }

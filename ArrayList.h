@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
+
+#define STR_LIMIT 100
 
 typedef struct ArrayList {
     void **data;
@@ -23,6 +26,8 @@ void delete(ArrayList *list, size_t index);
 void deleteBegin(ArrayList *list);
 
 void deleteEnd(ArrayList *list);
+
+void replace(ArrayList *list, void *newData, size_t index);
 
 void clearArrayList(ArrayList *list);
 

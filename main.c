@@ -23,7 +23,13 @@ int main() {
     delete(list, 2); // Delete third data in the array list
 
     printArrayList(list, printInt);
-    clearArrayList(list); // Free memory
+
+    int newValue = 50;
+    replace(list, &newValue, 3); // Replace fourth data with new data
+
+    printArrayList(list, printInt);
+
+    clearArrayList(list); // clear list from memory
 
     /* Another example for string (char*) data type */
 
@@ -33,7 +39,7 @@ int main() {
     ArrayList *list2 = createArrayList(size2);
 
     for (size_t i = 0; i < size2; i++) {
-        char *data = (char *) malloc(sizeof(char) * 100); // 100 is character limit, you can choose different value
+        char *data = (char *) malloc(sizeof(char) * STR_LIMIT); // character limit is 100, you can choose different value in header file
         printf("Data %zu: ", i + 1);
         scanf("%s", data);
 
@@ -45,7 +51,19 @@ int main() {
     delete(list2, 1); // Delete second data in the array list
 
     printArrayList(list2, printString);
-    clearArrayList(list2); // Free memory
+
+    char *newStr = (char *) malloc(sizeof(char) * STR_LIMIT);
+    strcpy(newStr, "newValue");
+    replace(list2, newStr, 2); // Replace third data with new data
+
+    printArrayList(list2, printString);
+
+    for (size_t i = 0; i < list2->size; i++) { // free all string data from memory
+        if (list->data[i] != NULL)
+            free(list->data[i]);
+    }
+
+    clearArrayList(list2); // clear list2 from memory
 
     return 0;
 }
