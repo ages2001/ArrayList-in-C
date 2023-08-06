@@ -39,7 +39,8 @@ int main() {
     ArrayList *list2 = createArrayList(size2);
 
     for (size_t i = 0; i < size2; i++) {
-        char *data = (char *) malloc(sizeof(char) * STR_LIMIT); // character limit is 100, you can choose different value in header file
+        char *data = (char *) malloc(
+                sizeof(char) * STR_LIMIT); // character limit is 100, you can choose different value in header file
         printf("Data %zu: ", i + 1);
         scanf("%s", data);
 
